@@ -1,0 +1,48 @@
+# Project Title: Predicting Time to Fill Job Vacancies
+
+# Objective
+The goal of this project was to build a machine learning model that predicts the number of days it takes to fill a job vacancy. Accurate predictions can help HR departments improve workforce planning, optimize recruitment timelines, and reduce time-to-hire.
+
+# Dataset
+The original dataset was sourced from Kaggle and saved under the 'Original_data' folder. Since the data was split across multiple monthly files, Power Query was used to:
+-Combine the datasets
+-Clean and standardize column names
+-Create new calculated columns
+The cleaned version was saved as 'Combined_hiring_data'.
+
+Key features in the dataset included filled column, interview start and interview end dates, sourcing start, and job type(FP). The target variable was the number of days it took to fill each position.
+
+# Modeling Approach (Python)
+Pandas was used to load and manipulate the dataset.
+
+Date columns were converted to datetime objects to enable accurate duration calculations.
+
+Unnecessary columns were dropped to reduce noise in the model.
+
+One-hot encoding was applied to categorical columns to convert them into numerical format, which machine learning models can interpret more effectively.
+
+The training and prediction datasets were aligned to ensure consistent structure for modeling.
+
+A RandomForestRegressor model was chosen for its ability to handle non-linear relationships and encoded categorical data well.
+
+The data was split into training and testing sets using train_test_split (80% training, 20% testing).
+
+Mean Absolute Error (MAE) was used to evaluate model performance. The model achieved an average error of approximately 3 days, which is reasonably accurate for practical use.
+
+Predictions were generated for open job positions and a new column, Predicted_Time_to_Fill, was added to the 'Prediction_data' dataframe.
+
+Final predictions were exported to Excel to preserve the original dataset.
+
+# Visualizations
+Two key plots were used to evaluate the model’s predictions:
+
+- Scatter Plot: Showed a clear upward trend where most predicted values closely matched the actual time to fill. Slight underprediction was observed, as many points fell just below the ideal reference line.
+
+- Histogram: Showed a balanced distribution of predicted values, with most positions expected to be filled within 51 to 52 days.
+
+# Conclusion
+The model provides a reliable estimate for how long it takes to fill different job roles, making it a useful tool for HR teams involved in workforce planning. While slight underprediction occurred, the low average error suggests that this model can support more data-driven hiring decisions and reduce guesswork in recruitment timelines.
+
+Project by:
+Darlyne Salome
+
